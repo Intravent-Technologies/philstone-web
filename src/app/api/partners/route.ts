@@ -1,28 +1,45 @@
 import { NextResponse } from 'next/server';
-import { getPartners, setPartners, Partner } from '@/lib/dataStore';
+import { supabase } from '@/lib/supabase';
 
 export async function GET() {
-  const partners = getPartners();
-  return NextResponse.json(partners);
+  try {
+    const { data, error } = await supabase
+      .from('partners')
+      .select('*')
+      .order('created_at', { ascending: true });
+    
+    if (error) throw error;
+    return NextResponse.json(data || []);
+  } catch (error) {
+    console.error('Error fetching partners:', error);
+    return NextResponse.json({ error: 'Failed to fetch partners' }, { status: 500 });
+  }
 }
 
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const partners = getPartners();
     
     if (body.id) {
-      const index = partners.findIndex((p: Partner) => p.id === body.id);
-      if (index !== -1) {
-        partners[index] = body;
-      }
+      const { data, error } = await supabase
+        .from('partners')
+        .update(body)
+        .eq('id', body.id)
+        .select();
+      
+      if (error) throw error;
+      return NextResponse.json({ success: true, data });
     } else {
-      partners.push({ ...body, id: Date.now().toString() });
+      const { data, error } = await supabase
+        .from('partners')
+        .insert([{ ...body, id: crypto.randomUUID() }])
+        .select();
+      
+      if (error) throw error;
+      return NextResponse.json({ success: true, data });
     }
-    
-    setPartners(partners);
-    return NextResponse.json({ success: true, partners });
   } catch (error) {
+    console.error('Error saving partner:', error);
     return NextResponse.json({ error: 'Failed to save partner' }, { status: 500 });
   }
 }
@@ -36,10 +53,17 @@ export async function DELETE(request: Request) {
       return NextResponse.json({ error: 'ID required' }, { status: 400 });
     }
     
-    const partners = getPartners().filter((p: Partner) => p.id !== id);
-    setPartners(partners);
-    return NextResponse.json({ success: true, partners });
+    const { error } = await supabase
+      .from('partners')
+      .delete()
+      .eq('id', id);
+    
+    if (error) throw error;
+    
+    const { data } = await supabase.from('partners').select('*');
+    return NextResponse.json({ success: true, partners: data });
   } catch (error) {
+    console.error('Error deleting partner:', error);
     return NextResponse.json({ error: 'Failed to delete partner' }, { status: 500 });
   }
 }

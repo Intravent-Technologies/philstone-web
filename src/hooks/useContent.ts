@@ -57,31 +57,15 @@ export interface Inquiry {
   replies?: string[];
 }
 
-const defaultPartners: Partner[] = [
-  { id: '1', name: 'International Mega Standard', logo: 'https://via.placeholder.com/180x80/1a365d/ffffff?text=IMS', website: '#' },
-  { id: '2', name: 'Q Power X2 Module', logo: 'https://via.placeholder.com/180x80/3182ce/ffffff?text=Q-POWER', website: '#' },
-  { id: '3', name: 'Access Bank', logo: 'https://via.placeholder.com/180x80/ed8936/ffffff?text=ACCESS', website: '#' },
-  { id: '4', name: 'KPMG', logo: 'https://via.placeholder.com/180x80/1a365d/ffffff?text=KPMG', website: '#' },
-  { id: '5', name: 'PWC', logo: 'https://via.placeholder.com/180x80/3182ce/ffffff?text=PwC', website: '#' },
-  { id: '6', name: 'Shell Nigeria', logo: 'https://via.placeholder.com/180x80/ed8936/ffffff?text=SHELL', website: '#' },
-];
-
-const defaultReviews: Review[] = [
-  { id: '1', quote: 'Philstone Consulting transformed our project management capabilities. Their team\'s expertise in PMP training and Agile implementation helped us achieve results we never thought possible.', rating: 5, date: '2026-03-15' },
-  { id: '2', quote: 'The AI transformation program delivered exceptional results. Our process efficiency improved by 60% within the first quarter.', rating: 5, date: '2026-02-28' },
-  { id: '3', quote: 'Outstanding training programs. Our team is now certified and confident in applying Lean Six Sigma methodologies.', rating: 5, date: '2026-02-10' },
-  { id: '4', quote: 'Working with Philstone was a game-changer for our organisation. Their consulting expertise helped us navigate complex challenges.', rating: 5, date: '2026-01-25' },
-];
-
 export function usePartners() {
-  const [partners, setPartners] = useState<Partner[]>(defaultPartners);
+  const [partners, setPartners] = useState<Partner[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetch('/api/partners')
       .then(res => res.json())
       .then(data => {
-        if (Array.isArray(data) && data.length > 0) {
+        if (Array.isArray(data)) {
           setPartners(data);
         }
       })
@@ -105,14 +89,14 @@ export function usePartners() {
 }
 
 export function useReviews() {
-  const [reviews, setReviews] = useState<Review[]>(defaultReviews);
+  const [reviews, setReviews] = useState<Review[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetch('/api/reviews')
       .then(res => res.json())
       .then(data => {
-        if (Array.isArray(data) && data.length > 0) {
+        if (Array.isArray(data)) {
           setReviews(data);
         }
       })
@@ -229,72 +213,62 @@ export function useInquiries() {
 }
 
 // API helpers
-export async function savePartner(partner: Partial<Partner> & { name: string; logo: string }): Promise<Partner[]> {
-  const res = await fetch('/api/partners', {
+export async function savePartner(partner: Partial<Partner> & { name: string; logo: string }): Promise<void> {
+  await fetch('/api/partners', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(partner),
   });
-  return (await res.json()).partners;
 }
 
-export async function deletePartner(id: string): Promise<Partner[]> {
-  const res = await fetch(`/api/partners?id=${id}`, { method: 'DELETE' });
-  return (await res.json()).partners;
+export async function deletePartner(id: string): Promise<void> {
+  await fetch(`/api/partners?id=${id}`, { method: 'DELETE' });
 }
 
-export async function saveReview(review: Partial<Review> & { quote: string }): Promise<Review[]> {
-  const res = await fetch('/api/reviews', {
+export async function saveReview(review: Partial<Review> & { quote: string }): Promise<void> {
+  await fetch('/api/reviews', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(review),
   });
-  return (await res.json()).reviews;
 }
 
-export async function deleteReview(id: string): Promise<Review[]> {
-  const res = await fetch(`/api/reviews?id=${id}`, { method: 'DELETE' });
-  return (await res.json()).reviews;
+export async function deleteReview(id: string): Promise<void> {
+  await fetch(`/api/reviews?id=${id}`, { method: 'DELETE' });
 }
 
-export async function saveBlogPost(post: Partial<BlogPost> & { title: string }): Promise<BlogPost[]> {
-  const res = await fetch('/api/blog-posts', {
+export async function saveBlogPost(post: Partial<BlogPost> & { title: string }): Promise<void> {
+  await fetch('/api/blog-posts', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(post),
   });
-  return (await res.json()).blogPosts;
 }
 
-export async function deleteBlogPost(id: string): Promise<BlogPost[]> {
-  const res = await fetch(`/api/blog-posts?id=${id}`, { method: 'DELETE' });
-  return (await res.json()).blogPosts;
+export async function deleteBlogPost(id: string): Promise<void> {
+  await fetch(`/api/blog-posts?id=${id}`, { method: 'DELETE' });
 }
 
-export async function saveCaseStudy(study: Partial<CaseStudy> & { title: string }): Promise<CaseStudy[]> {
-  const res = await fetch('/api/case-studies', {
+export async function saveCaseStudy(study: Partial<CaseStudy> & { title: string }): Promise<void> {
+  await fetch('/api/case-studies', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(study),
   });
-  return (await res.json()).caseStudies;
 }
 
-export async function deleteCaseStudy(id: string): Promise<CaseStudy[]> {
-  const res = await fetch(`/api/case-studies?id=${id}`, { method: 'DELETE' });
-  return (await res.json()).caseStudies;
+export async function deleteCaseStudy(id: string): Promise<void> {
+  await fetch(`/api/case-studies?id=${id}`, { method: 'DELETE' });
 }
 
-export async function saveInquiry(inquiry: Partial<Inquiry>): Promise<Inquiry[]> {
-  const res = await fetch('/api/inquiries', {
+export async function saveInquiry(inquiry: Partial<Inquiry>): Promise<void> {
+  await fetch('/api/inquiries', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(inquiry),
   });
-  return (await res.json()).inquiries;
 }
 
-export async function deleteInquiry(id: string): Promise<Inquiry[]> {
-  const res = await fetch(`/api/inquiries?id=${id}`, { method: 'DELETE' });
-  return (await res.json()).inquiries;
+export async function deleteInquiry(id: string): Promise<void> {
+  await fetch(`/api/inquiries?id=${id}`, { method: 'DELETE' });
 }

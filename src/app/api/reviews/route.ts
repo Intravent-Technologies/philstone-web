@@ -1,28 +1,45 @@
 import { NextResponse } from 'next/server';
-import { getReviews, setReviews, Review } from '@/lib/dataStore';
+import { supabase } from '@/lib/supabase';
 
 export async function GET() {
-  const reviews = getReviews();
-  return NextResponse.json(reviews);
+  try {
+    const { data, error } = await supabase
+      .from('reviews')
+      .select('*')
+      .order('created_at', { ascending: true });
+    
+    if (error) throw error;
+    return NextResponse.json(data || []);
+  } catch (error) {
+    console.error('Error fetching reviews:', error);
+    return NextResponse.json({ error: 'Failed to fetch reviews' }, { status: 500 });
+  }
 }
 
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const reviews = getReviews();
     
     if (body.id) {
-      const index = reviews.findIndex((r: Review) => r.id === body.id);
-      if (index !== -1) {
-        reviews[index] = body;
-      }
+      const { data, error } = await supabase
+        .from('reviews')
+        .update(body)
+        .eq('id', body.id)
+        .select();
+      
+      if (error) throw error;
+      return NextResponse.json({ success: true, data });
     } else {
-      reviews.push({ ...body, id: Date.now().toString(), date: new Date().toISOString().split('T')[0] });
+      const { data, error } = await supabase
+        .from('reviews')
+        .insert([{ ...body, id: crypto.randomUUID(), date: new Date().toISOString().split('T')[0] }])
+        .select();
+      
+      if (error) throw error;
+      return NextResponse.json({ success: true, data });
     }
-    
-    setReviews(reviews);
-    return NextResponse.json({ success: true, reviews });
   } catch (error) {
+    console.error('Error saving review:', error);
     return NextResponse.json({ error: 'Failed to save review' }, { status: 500 });
   }
 }
@@ -36,10 +53,17 @@ export async function DELETE(request: Request) {
       return NextResponse.json({ error: 'ID required' }, { status: 400 });
     }
     
-    const reviews = getReviews().filter((r: Review) => r.id !== id);
-    setReviews(reviews);
-    return NextResponse.json({ success: true, reviews });
+    const { error } = await supabase
+      .from('reviews')
+      .delete()
+      .eq('id', id);
+    
+    if (error) throw error;
+    
+    const { data } = await supabase.from('reviews').select('*');
+    return NextResponse.json({ success: true, reviews: data });
   } catch (error) {
+    console.error('Error deleting review:', error);
     return NextResponse.json({ error: 'Failed to delete review' }, { status: 500 });
   }
 }

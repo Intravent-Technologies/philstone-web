@@ -1,35 +1,52 @@
 import { NextResponse } from 'next/server';
-import { getBlogPosts, setBlogPosts, BlogPost } from '@/lib/dataStore';
+import { supabase } from '@/lib/supabase';
 
 export async function GET() {
-  const blogPosts = getBlogPosts();
-  return NextResponse.json(blogPosts);
+  try {
+    const { data, error } = await supabase
+      .from('blog_posts')
+      .select('*')
+      .order('created_at', { ascending: false });
+    
+    if (error) throw error;
+    return NextResponse.json(data || []);
+  } catch (error) {
+    console.error('Error fetching blog posts:', error);
+    return NextResponse.json({ error: 'Failed to fetch blog posts' }, { status: 500 });
+  }
 }
 
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const blogPosts = getBlogPosts();
-    
     const slug = body.title ? body.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '') : '';
     
     if (body.id) {
-      const index = blogPosts.findIndex((p: BlogPost) => p.id === body.id);
-      if (index !== -1) {
-        blogPosts[index] = { ...body, slug: blogPosts[index].slug };
-      }
+      const { data, error } = await supabase
+        .from('blog_posts')
+        .update(body)
+        .eq('id', body.id)
+        .select();
+      
+      if (error) throw error;
+      return NextResponse.json({ success: true, data });
     } else {
-      blogPosts.unshift({
-        ...body,
-        id: Date.now().toString(),
-        slug,
-        date: new Date().toISOString().split('T')[0],
-      });
+      const { data, error } = await supabase
+        .from('blog_posts')
+        .insert([{ 
+          ...body, 
+          id: crypto.randomUUID(), 
+          slug,
+          date: new Date().toISOString().split('T')[0],
+          read_time: body.readTime || body.read_time || '5 min read'
+        }])
+        .select();
+      
+      if (error) throw error;
+      return NextResponse.json({ success: true, data });
     }
-    
-    setBlogPosts(blogPosts);
-    return NextResponse.json({ success: true, blogPosts });
   } catch (error) {
+    console.error('Error saving blog post:', error);
     return NextResponse.json({ error: 'Failed to save blog post' }, { status: 500 });
   }
 }
@@ -43,10 +60,17 @@ export async function DELETE(request: Request) {
       return NextResponse.json({ error: 'ID required' }, { status: 400 });
     }
     
-    const blogPosts = getBlogPosts().filter((p: BlogPost) => p.id !== id);
-    setBlogPosts(blogPosts);
-    return NextResponse.json({ success: true, blogPosts });
+    const { error } = await supabase
+      .from('blog_posts')
+      .delete()
+      .eq('id', id);
+    
+    if (error) throw error;
+    
+    const { data } = await supabase.from('blog_posts').select('*');
+    return NextResponse.json({ success: true, blogPosts: data });
   } catch (error) {
+    console.error('Error deleting blog post:', error);
     return NextResponse.json({ error: 'Failed to delete blog post' }, { status: 500 });
   }
 }

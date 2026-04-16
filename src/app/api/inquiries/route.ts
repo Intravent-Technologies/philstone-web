@@ -1,34 +1,51 @@
 import { NextResponse } from 'next/server';
-import { getInquiries, setInquiries, Inquiry } from '@/lib/dataStore';
+import { supabase } from '@/lib/supabase';
 
 export async function GET() {
-  const inquiries = getInquiries();
-  return NextResponse.json(inquiries);
+  try {
+    const { data, error } = await supabase
+      .from('inquiries')
+      .select('*')
+      .order('created_at', { ascending: false });
+    
+    if (error) throw error;
+    return NextResponse.json(data || []);
+  } catch (error) {
+    console.error('Error fetching inquiries:', error);
+    return NextResponse.json({ error: 'Failed to fetch inquiries' }, { status: 500 });
+  }
 }
 
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const inquiries = getInquiries();
     
     if (body.id) {
-      const index = inquiries.findIndex((i: Inquiry) => i.id === body.id);
-      if (index !== -1) {
-        inquiries[index] = body;
-      }
+      const { data, error } = await supabase
+        .from('inquiries')
+        .update(body)
+        .eq('id', body.id)
+        .select();
+      
+      if (error) throw error;
+      return NextResponse.json({ success: true, data });
     } else {
-      inquiries.unshift({
-        ...body,
-        id: Date.now().toString(),
-        date: new Date().toISOString().split('T')[0],
-        status: 'new',
-        replies: [],
-      });
+      const { data, error } = await supabase
+        .from('inquiries')
+        .insert([{ 
+          ...body, 
+          id: crypto.randomUUID(), 
+          date: new Date().toISOString().split('T')[0],
+          status: 'new',
+          replies: body.replies || []
+        }])
+        .select();
+      
+      if (error) throw error;
+      return NextResponse.json({ success: true, data });
     }
-    
-    setInquiries(inquiries);
-    return NextResponse.json({ success: true, inquiries });
   } catch (error) {
+    console.error('Error saving inquiry:', error);
     return NextResponse.json({ error: 'Failed to save inquiry' }, { status: 500 });
   }
 }
@@ -42,10 +59,17 @@ export async function DELETE(request: Request) {
       return NextResponse.json({ error: 'ID required' }, { status: 400 });
     }
     
-    const inquiries = getInquiries().filter((i: Inquiry) => i.id !== id);
-    setInquiries(inquiries);
-    return NextResponse.json({ success: true, inquiries });
+    const { error } = await supabase
+      .from('inquiries')
+      .delete()
+      .eq('id', id);
+    
+    if (error) throw error;
+    
+    const { data } = await supabase.from('inquiries').select('*');
+    return NextResponse.json({ success: true, inquiries: data });
   } catch (error) {
+    console.error('Error deleting inquiry:', error);
     return NextResponse.json({ error: 'Failed to delete inquiry' }, { status: 500 });
   }
 }
