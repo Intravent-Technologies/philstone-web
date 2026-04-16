@@ -17,7 +17,8 @@ export default function RootLayout({
   return (
     <html lang="en" className="light-theme">
       <head>
-        <link rel="icon" href="https://philstoneconsulting.com/wp-content/uploads/2025/07/Philstone-Consulting-logo-1-1024x277.jpg" type="image/jpeg" />
+        <link rel="icon" href="/favicon.png" type="image/png" />
+        <link rel="apple-touch-icon" href="/favicon.png" />
       </head>
       <body>
         {!isAdmin && <Header />}
