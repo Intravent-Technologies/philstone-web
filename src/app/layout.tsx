@@ -17,6 +17,8 @@ export default function RootLayout({
   return (
     <html lang="en" className="light-theme">
       <head>
+        <title>Philstone Consulting | AI & Project Management | UK & Nigeria</title>
+        <meta name="description" content="Philstone Consulting - Premium AI transformation, project management, Agile consulting, and professional training. Offices in Lagos, Abuja & UK." />
         <link rel="icon" href="/favicon.png" type="image/png" />
         <link rel="apple-touch-icon" href="/favicon.png" />
       </head>
