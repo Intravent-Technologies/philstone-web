@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { LogOut, FileText, Briefcase, Mail, Plus, Edit2, Trash2, Eye, Send, X, CheckCircle, Users, Star } from 'lucide-react';
+import { LogOut, FileText, Briefcase, Mail, Plus, Edit2, Trash2, Eye, Send, X, CheckCircle, Users, Star, Menu } from 'lucide-react';
 import { 
   usePartners, useReviews, useBlogPosts, useCaseStudies, useInquiries,
   savePartner, deletePartner as apiDeletePartner,
@@ -25,6 +25,7 @@ export default function AdminDashboard() {
   const [editingItem, setEditingItem] = useState<BlogPost | CaseStudy | Partner | Review | null>(null);
   const [replyingTo, setReplyingTo] = useState<Inquiry | null>(null);
   const [replyMessage, setReplyMessage] = useState('');
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const { partners, refreshPartners } = usePartners();
   const { reviews, refreshReviews } = useReviews();
@@ -39,6 +40,19 @@ export default function AdminDashboard() {
     }
   }, [router]);
 
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
+  };
+
+  const closeMobileMenu = () => {
+    setMobileMenuOpen(false);
+  };
+
+  const handleTabChange = (tab: Tab) => {
+    setActiveTab(tab);
+    closeMobileMenu();
+  };
+
   const handleLogout = () => {
     localStorage.removeItem('admin_logged_in');
     router.push('/admin');
@@ -48,6 +62,7 @@ export default function AdminDashboard() {
     setModalType(type);
     setEditingItem(null);
     setShowModal(true);
+    closeMobileMenu();
   };
 
   const openEditModal = (type: 'blog' | 'case-study' | 'partner' | 'review', item: BlogPost | CaseStudy | Partner | Review) => {
@@ -250,22 +265,22 @@ export default function AdminDashboard() {
             Blog Posts
             <span className={styles.count}>{blogPosts.length}</span>
           </button>
-          <button className={`${styles.navItem} ${activeTab === 'case-studies' ? styles.active : ''}`} onClick={() => setActiveTab('case-studies')}>
+          <button className={`${styles.navItem} ${activeTab === 'case-studies' ? styles.active : ''}`} onClick={() => handleTabChange('case-studies')}>
             <Briefcase size={20} />
             Case Studies
             <span className={styles.count}>{caseStudies.length}</span>
           </button>
-          <button className={`${styles.navItem} ${activeTab === 'partners' ? styles.active : ''}`} onClick={() => setActiveTab('partners')}>
+          <button className={`${styles.navItem} ${activeTab === 'partners' ? styles.active : ''}`} onClick={() => handleTabChange('partners')}>
             <Users size={20} />
             Partners
             <span className={styles.count}>{partners.length}</span>
           </button>
-          <button className={`${styles.navItem} ${activeTab === 'reviews' ? styles.active : ''}`} onClick={() => setActiveTab('reviews')}>
+          <button className={`${styles.navItem} ${activeTab === 'reviews' ? styles.active : ''}`} onClick={() => handleTabChange('reviews')}>
             <Star size={20} />
             Reviews
             <span className={styles.count}>{reviews.length}</span>
           </button>
-          <button className={`${styles.navItem} ${activeTab === 'inquiries' ? styles.active : ''}`} onClick={() => setActiveTab('inquiries')}>
+          <button className={`${styles.navItem} ${activeTab === 'inquiries' ? styles.active : ''}`} onClick={() => handleTabChange('inquiries')}>
             <Mail size={20} />
             Inquiries
             {inquiries.filter(i => i.status === 'new').length > 0 && (
@@ -275,7 +290,7 @@ export default function AdminDashboard() {
         </nav>
 
         <div className={styles.sidebarFooter}>
-          <Link href="/" target="_blank" className={styles.viewSiteBtn}>
+          <Link href="/" target="_blank" className={styles.viewSiteBtn} onClick={closeMobileMenu}>
             <Eye size={18} />
             View Website
           </Link>
@@ -285,6 +300,12 @@ export default function AdminDashboard() {
           </button>
         </div>
       </aside>
+
+      <button className={styles.mobileMenuBtn} onClick={toggleMobileMenu}>
+        <Menu size={24} />
+      </button>
+
+      <div className={`${styles.mobileOverlay} ${mobileMenuOpen ? styles.open : ''}`} onClick={closeMobileMenu} />
 
       <main className={styles.main}>
         {activeTab === 'blog' && (
