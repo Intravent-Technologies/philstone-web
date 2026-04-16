@@ -75,10 +75,6 @@ export default function AdminLogin() {
           </button>
         </form>
 
-        <div className={styles.demo}>
-          <p>Demo credentials:</p>
-          <code>admin@philstoneconsulting.com / Philstone2026!</code>
-        </div>
       </div>
     </div>
   );
