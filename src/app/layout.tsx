@@ -16,6 +16,9 @@ export default function RootLayout({
 
   return (
     <html lang="en" className="light-theme">
+      <head>
+        <link rel="icon" href="https://philstoneconsulting.com/wp-content/uploads/2025/07/Philstone-Consulting-logo-1-1024x277.jpg" type="image/jpeg" />
+      </head>
       <body>
         {!isAdmin && <Header />}
         <main>{children}</main>
