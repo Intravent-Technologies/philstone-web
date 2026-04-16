@@ -13,7 +13,11 @@ export default function WhatsAppButton() {
     <div className={styles.container}>
       <div className={`${styles.tooltip} ${isHovered ? styles.visible : ''}`}>
         <span className={styles.pulseRing} />
-        <img src="https://api.dicebear.com/7.x/personas/svg?seed=Phil&backgroundColor=1a365d&hair=short01&hairColor=4a3728&clothingColor=1a365d&skinColor=f5d0c5" alt="Phil" className={styles.avatar} />
+        <img 
+          src="https://api.dicebear.com/9.x/notionists/svg?seed=Phil&backgroundColor=1a365d" 
+          alt="Phil" 
+          className={styles.avatar} 
+        />
         <span className={styles.nameTag}>Phil</span>
       </div>
       
@@ -27,7 +31,10 @@ export default function WhatsAppButton() {
         onMouseLeave={() => setIsHovered(false)}
       >
         <span className={styles.avatarSmall}>
-          <img src="https://api.dicebear.com/7.x/personas/svg?seed=Phil&backgroundColor=1a365d&hair=short01&hairColor=4a3728&clothingColor=1a365d&skinColor=f5d0c5" alt="Phil" />
+          <img 
+            src="https://api.dicebear.com/9.x/notionists/svg?seed=Phil&backgroundColor=1a365d" 
+            alt="Phil" 
+          />
         </span>
         <span className={styles.chatText}>Chat with Phil</span>
         <MessageCircle size={20} />
