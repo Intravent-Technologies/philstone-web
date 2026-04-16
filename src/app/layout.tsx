@@ -3,6 +3,7 @@
 import { usePathname } from 'next/navigation';
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import WhatsAppButton from "@/components/WhatsAppButton";
 import "./globals.css";
 
 export default function RootLayout({
@@ -19,6 +20,7 @@ export default function RootLayout({
         {!isAdmin && <Header />}
         <main>{children}</main>
         {!isAdmin && <Footer />}
+        {!isAdmin && <WhatsAppButton />}
       </body>
     </html>
   );
