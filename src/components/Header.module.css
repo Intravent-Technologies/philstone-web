@@ -53,7 +53,7 @@
   left: 0;
   width: 0;
   height: 2px;
-  background: linear-gradient(90deg, #f6ad55, #ed8936);
+  background: linear-gradient(90deg, #3182ce, #1a365d);
   transition: var(--transition-fast);
 }
 
@@ -63,7 +63,7 @@
 
 .ctaButton {
   padding: 12px 28px;
-  background: linear-gradient(135deg, #f6ad55 0%, #ed8936 100%);
+  background: linear-gradient(135deg, #3182ce 0%, #1a365d 100%);
   color: #1a365d;
   font-family: var(--font-heading);
   font-size: 14px;
@@ -129,7 +129,7 @@
 .mobileCtaButton {
   margin-top: 16px;
   padding: 16px 24px;
-  background: linear-gradient(135deg, #f6ad55 0%, #ed8936 100%);
+  background: linear-gradient(135deg, #3182ce 0%, #1a365d 100%);
   color: #1a365d;
   font-family: var(--font-heading);
   font-size: 16px;

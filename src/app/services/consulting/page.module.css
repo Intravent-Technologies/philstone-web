@@ -29,7 +29,7 @@
 }
 
 .breadcrumb a:hover {
-  color: #f6ad55;
+  color: #3182ce;
 }
 
 .heroTag {
@@ -39,7 +39,7 @@
   font-weight: 600;
   letter-spacing: 2px;
   text-transform: uppercase;
-  color: #f6ad55;
+  color: #3182ce;
   margin-bottom: 20px;
   padding: 8px 16px;
   background: rgba(246, 173, 85, 0.15);
@@ -230,7 +230,7 @@
   align-items: center;
   gap: 10px;
   padding: 18px 32px;
-  background: linear-gradient(135deg, #f6ad55 0%, #ed8936 100%);
+  background: linear-gradient(135deg, #3182ce 0%, #1a365d 100%);
   color: #1a365d;
   font-family: var(--font-heading);
   font-weight: 600;

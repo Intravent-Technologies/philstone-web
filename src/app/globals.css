@@ -4,8 +4,8 @@
   --color-primary: #1a365d;
   --color-secondary: #2c5282;
   --color-tertiary: #3182ce;
-  --color-accent: #f6ad55;
-  --color-accent-secondary: #ed8936;
+  --color-accent: #3182ce;
+  --color-accent-secondary: #1a365d;
   --color-accent-light: #fbd38d;
   --color-accent-glow: rgba(246, 173, 85, 0.3);
   --color-bg-light: #f8fafc;
@@ -117,7 +117,7 @@ input, textarea, select {
 }
 
 .gradient-text {
-  background: linear-gradient(135deg, #f6ad55 0%, #ed8936 100%);
+  background: linear-gradient(135deg, #3182ce 0%, #1a365d 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -131,7 +131,7 @@ input, textarea, select {
 }
 
 .gradient-bg {
-  background: linear-gradient(135deg, #f6ad55 0%, #ed8936 100%);
+  background: linear-gradient(135deg, #3182ce 0%, #1a365d 100%);
 }
 
 .gradient-bg-blue {

@@ -44,7 +44,7 @@
   font-weight: 600;
   letter-spacing: 2px;
   text-transform: uppercase;
-  background: linear-gradient(135deg, #f6ad55 0%, #ed8936 100%);
+  background: linear-gradient(135deg, #3182ce 0%, #1a365d 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -77,8 +77,8 @@
 }
 
 .social a:hover {
-  background: linear-gradient(135deg, #f6ad55 0%, #ed8936 100%);
-  border-color: #f6ad55;
+  background: linear-gradient(135deg, #3182ce 0%, #1a365d 100%);
+  border-color: #3182ce;
   color: #1a365d;
   transform: translateY(-2px);
   box-shadow: 0 4px 15px rgba(246, 173, 85, 0.3);
@@ -115,7 +115,7 @@
 
 .links a:hover,
 .services a:hover {
-  color: #f6ad55;
+  color: #3182ce;
   transform: translateX(4px);
 }
 
@@ -130,7 +130,7 @@
 .contact svg {
   flex-shrink: 0;
   margin-top: 3px;
-  color: #f6ad55;
+  color: #3182ce;
 }
 
 .contact a {
@@ -139,7 +139,7 @@
 }
 
 .contact a:hover {
-  color: #f6ad55;
+  color: #3182ce;
 }
 
 .phones {
