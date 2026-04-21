@@ -3,13 +3,14 @@
 import Link from 'next/link';
 import { ArrowRight, Target, BookOpen, Cpu, Layers, CheckCircle, Award, Globe, Users, Star, Quote } from 'lucide-react';
 import AnimatedSection from '@/components/AnimatedSection';
+import Counter from '@/components/Counter';
 import { usePartners, useReviews } from '@/hooks/useContent';
 import styles from './page.module.css';
 
 const stats = [
-  { value: '2000+', label: 'Professionals Trained', icon: Users },
-  { value: '30+', label: 'Organizations Served', icon: Award },
-  { value: '4', label: 'Continents', icon: Globe },
+  { value: 2000, suffix: '+', label: 'Professionals Trained', icon: Users },
+  { value: 30, suffix: '+', label: 'Organizations Served', icon: Award },
+  { value: 4, suffix: '', label: 'Continents', icon: Globe },
 ];
 
 const pillars = [
@@ -17,6 +18,7 @@ const pillars = [
     icon: Target,
     title: 'Consulting & Advisory',
     slug: 'consulting',
+    image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&q=80',
     description: 'Strategic guidance for project management, change, risk, and organizational excellence.',
     features: ['PMO Setup & Governance', 'Change Management', 'Risk & Resilience', 'Strategy & Ops'],
   },
@@ -24,6 +26,7 @@ const pillars = [
     icon: BookOpen,
     title: 'Training & Certification',
     slug: 'training',
+    image: 'https://images.unsplash.com/photo-1531482615713-2afd69097998?w=600&q=80',
     description: 'Globally accredited programmes for PMP, PRINCE2, Lean Six Sigma, and professional development.',
     features: ['PMP & CAPM', 'PRINCE2', 'Lean Six Sigma', 'Professional Skills'],
   },
@@ -31,6 +34,7 @@ const pillars = [
     icon: Cpu,
     title: 'AI Transformation',
     slug: 'ai-transformation',
+    image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&q=80',
     description: 'Harness AI, automation, and digital tools to fundamentally transform how you work and compete.',
     features: ['AI Strategy & Readiness', 'Process Automation', 'Data Analytics', 'Digital Workflows'],
   },
@@ -38,16 +42,17 @@ const pillars = [
     icon: Layers,
     title: 'Agile & Scrum',
     slug: 'agile-scrum',
+    image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&q=80',
     description: 'Adaptive, outcome-focused delivery frameworks for faster results and greater flexibility.',
     features: ['Agile Transformation', 'Scrum Setup & Coaching', 'Hybrid PM', 'Sprint Support'],
   },
 ];
 
 const differentiators = [
-  { title: 'Globally Certified Experts', description: 'PMI, APMG, ASQ, Scrum Alliance credentials bringing international best practice.' },
-  { title: 'Proven Track Record', description: 'Measurable results across government, oil & gas, banking, healthcare, and non-profits.' },
-  { title: 'Tailored, Not Templated', description: 'Every solution co-created to match your context, culture, and objectives.' },
-  { title: 'Future-Ready Approach', description: 'AI, Agile, and digital capabilities integrated with proven methodologies.' },
+  { title: 'Globally Certified Experts', description: 'PMI, APMG, ASQ, Scrum Alliance credentials bringing international best practice.', image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&q=80' },
+  { title: 'Proven Track Record', description: 'Measurable results across government, oil & gas, banking, healthcare, and non-profits.', image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600&q=80' },
+  { title: 'Tailored, Not Templated', description: 'Every solution co-created to match your context, culture, and objectives.', image: 'https://images.unsplash.com/photo-1600880292089-90a7e08600f3?w=600&q=80' },
+  { title: 'Future-Ready Approach', description: 'AI, Agile, and digital capabilities integrated with proven methodologies.', image: 'https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=600&q=80' },
 ];
 
 export default function HomePage() {
@@ -120,7 +125,9 @@ export default function HomePage() {
               <AnimatedSection key={stat.label} delay={index * 100}>
                 <div className={styles.statCard}>
                   <stat.icon className={styles.statIcon} size={32} />
-                  <span className={styles.statValue}>{stat.value}</span>
+                  <span className={styles.statValue}>
+                    <Counter end={stat.value} suffix={stat.suffix} duration={2500} />
+                  </span>
                   <span className={styles.statLabel}>{stat.label}</span>
                 </div>
               </AnimatedSection>
@@ -142,22 +149,27 @@ export default function HomePage() {
             {pillars.map((pillar, index) => (
               <AnimatedSection key={pillar.title} delay={index * 100}>
                 <div className={styles.pillarCard}>
-                  <div className={styles.pillarIcon}>
-                    <pillar.icon size={28} />
+                  <div className={styles.pillarImage}>
+                    <img src={pillar.image} alt={pillar.title} />
                   </div>
-                  <h3>{pillar.title}</h3>
-                  <p>{pillar.description}</p>
-                  <ul className={styles.pillarFeatures}>
-                    {pillar.features.map((feature) => (
-                      <li key={feature}>
-                        <CheckCircle size={14} />
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-                  <Link href={`/services/${pillar.slug}`} className={styles.pillarLink}>
-                    Learn More <ArrowRight size={16} />
-                  </Link>
+                  <div className={styles.pillarCardContent}>
+                    <div className={styles.pillarIcon}>
+                      <pillar.icon size={28} />
+                    </div>
+                    <h3>{pillar.title}</h3>
+                    <p>{pillar.description}</p>
+                    <ul className={styles.pillarFeatures}>
+                      {pillar.features.map((feature) => (
+                        <li key={feature}>
+                          <CheckCircle size={14} />
+                          {feature}
+                        </li>
+                      ))}
+                    </ul>
+                    <Link href={`/services/${pillar.slug}`} className={styles.pillarLink}>
+                      Learn More <ArrowRight size={16} />
+                    </Link>
+                  </div>
                 </div>
               </AnimatedSection>
             ))}
@@ -177,6 +189,9 @@ export default function HomePage() {
             {differentiators.map((item, index) => (
               <AnimatedSection key={item.title} delay={index * 100}>
                 <div className={styles.differentiatorCard}>
+                  <div className={styles.differentiatorImage}>
+                    <img src={item.image} alt={item.title} />
+                  </div>
                   <h3>{item.title}</h3>
                   <p>{item.description}</p>
                 </div>
