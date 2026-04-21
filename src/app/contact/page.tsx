@@ -53,7 +53,7 @@ export default function ContactPage() {
   return (
     <>
       <Hero
-        imageSrc="https://images.unsplash.com/photo-1557804506-669a679d5c38?w=1920&q=80"
+        imageSrc="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1920&q=80"
         title="Get in Touch"
         subtitle="Whether you're exploring consulting support, planning a training programme, pursuing Agile transformation, or ready to harness AI for your business, we'd love to hear from you."
       >
