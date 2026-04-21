@@ -57,8 +57,18 @@ export default function HomePage() {
   return (
     <>
       <section className={styles.hero}>
-        <div className={styles.heroGrid} />
-        <div className={styles.heroGlow} />
+        <video
+          className={styles.heroVideo}
+          autoPlay
+          muted
+          loop
+          playsInline
+          poster="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920&q=80"
+        >
+          <source src="https://cdn.pixabay.com/video/2020/05/25/40130-424930032_large.mp4" type="video/mp4" />
+        </video>
+        <div className={styles.heroOverlay} />
+        <div className={styles.heroGradientBottom} />
         <div className={`container ${styles.heroContent}`}>
           <AnimatedSection>
             <span className={styles.heroTag}>Initiate. Effect. Sustain Change.</span>
