@@ -2,13 +2,13 @@
 
 :root {
   --color-primary: #1a365d;
-  --color-secondary: #2c5282;
+  --color-secondary: #3182ce;
   --color-tertiary: #3182ce;
   --color-accent: #3182ce;
   --color-accent-secondary: #1a365d;
-  --color-accent-light: #fbd38d;
-  --color-accent-glow: rgba(246, 173, 85, 0.3);
-  --color-bg-light: #f8fafc;
+  --color-accent-light: #bee3f8;
+  --color-accent-glow: rgba(49, 130, 206, 0.3);
+  --color-bg-light: #ffffff;
   --color-bg-dark: #1a365d;
   --color-text-primary: #ffffff;
   --color-text-secondary: rgba(255, 255, 255, 0.8);
@@ -34,10 +34,10 @@
 }
 
 .light-theme {
-  --color-primary: #f8fafc;
-  --color-secondary: #e2e8f0;
+  --color-primary: #ffffff;
+  --color-secondary: #f1f5f9;
   --color-tertiary: #1a365d;
-  --color-bg-dark: #f8fafc;
+  --color-bg-dark: #ffffff;
   --color-text-primary: #1a365d;
   --color-text-secondary: #64748b;
   --color-glass: #ffffff;
@@ -212,10 +212,10 @@ input, textarea, select {
 
 @keyframes core-glow {
   0%, 100% {
-    box-shadow: 0 0 20px rgba(246, 173, 85, 0.4), 0 0 40px rgba(246, 173, 85, 0.2);
+    box-shadow: 0 0 20px rgba(49, 130, 206, 0.4), 0 0 40px rgba(49, 130, 206, 0.2);
   }
   50% {
-    box-shadow: 0 0 30px rgba(246, 173, 85, 0.6), 0 0 60px rgba(246, 173, 85, 0.3);
+    box-shadow: 0 0 30px rgba(49, 130, 206, 0.6), 0 0 60px rgba(49, 130, 206, 0.3);
   }
 }
 
