@@ -1,6 +1,7 @@
 import Link from 'next/link';
-import { ArrowRight, Check, Cpu, Brain, BarChart3, Bot, Database } from 'lucide-react';
+import { ArrowRight, Check, Cpu, Brain, Bot, Database, Sparkles, BarChart3 } from 'lucide-react';
 import AnimatedSection from '@/components/AnimatedSection';
+import Hero from '@/components/Hero';
 import styles from '../consulting/page.module.css';
 
 const services = [
@@ -25,29 +26,20 @@ export const metadata = {
 export default function AITransformationPage() {
   return (
     <>
-      <section className={styles.hero}>
-        <div className={styles.heroGrid} />
-        <div className="container">
-          <AnimatedSection>
-            <nav className={styles.breadcrumb}>
-              <Link href="/">Home</Link>
-              <span>/</span>
-              <Link href="/services">Services</Link>
-              <span>/</span>
-              <span>AI Transformation</span>
-            </nav>
-          </AnimatedSection>
-          <AnimatedSection delay={100}>
-            <span className={styles.heroTag}>Flagship Service</span>
-          </AnimatedSection>
-          <AnimatedSection delay={200}>
-            <h1>AI Transformation</h1>
-          </AnimatedSection>
-          <AnimatedSection delay={300}>
-            <p>We help organisations harness AI, automation, and digital tools to fundamentally transform how they work, compete, and deliver value. Stay ahead in the age of intelligent automation.</p>
-          </AnimatedSection>
-        </div>
-      </section>
+      <Hero
+        imageSrc="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1920&q=80"
+        title="AI Transformation"
+        subtitle="We help organisations harness AI, automation, and digital tools to fundamentally transform how they work, compete, and deliver value. Stay ahead in the age of intelligent automation."
+      >
+        <nav className={styles.breadcrumb}>
+          <Link href="/">Home</Link>
+          <span>/</span>
+          <Link href="/services">Services</Link>
+          <span>/</span>
+          <span>AI Transformation</span>
+        </nav>
+        <span className={styles.heroTag}>Flagship Service</span>
+      </Hero>
 
       <section className={`section ${styles.benefitsSection}`}>
         <div className="container">

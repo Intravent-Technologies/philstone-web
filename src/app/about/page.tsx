@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { Sparkles, Target, Heart, Lightbulb, BookOpen, RefreshCw, ArrowRight, MapPin, Globe } from 'lucide-react';
 import AnimatedSection from '@/components/AnimatedSection';
+import Hero from '@/components/Hero';
+import Counter from '@/components/Counter';
 import styles from './page.module.css';
 
 const values = [
@@ -12,10 +14,10 @@ const values = [
 ];
 
 const stats = [
-  { value: '2000+', label: 'Professionals Trained' },
-  { value: '30+', label: 'Organizations Served' },
-  { value: '4', label: 'Continents' },
-  { value: '10+', label: 'Years of Excellence' },
+  { value: 2000, suffix: '+', label: 'Professionals Trained' },
+  { value: 30, suffix: '+', label: 'Organizations Served' },
+  { value: 4, suffix: '', label: 'Continents' },
+  { value: 10, suffix: '+', label: 'Years of Excellence' },
 ];
 
 export const metadata = {
@@ -26,27 +28,18 @@ export const metadata = {
 export default function AboutPage() {
   return (
     <>
-      <section className={styles.hero}>
-        <div className={styles.heroGrid} />
-        <div className="container">
-          <AnimatedSection>
-            <nav className={styles.breadcrumb}>
-              <Link href="/">Home</Link>
-              <span>/</span>
-              <span>About</span>
-            </nav>
-          </AnimatedSection>
-          <AnimatedSection delay={100}>
-            <span className={styles.heroTag}>Initiate. Effect. Sustain Change.</span>
-          </AnimatedSection>
-          <AnimatedSection delay={200}>
-            <h1>Get to Know Who We Are</h1>
-          </AnimatedSection>
-          <AnimatedSection delay={300}>
-            <p>And What Makes Us Different</p>
-          </AnimatedSection>
-        </div>
-      </section>
+      <Hero
+        imageSrc="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1920&q=80"
+        title="Get to Know Who We Are"
+        subtitle="And What Makes Us Different"
+      >
+        <nav className={styles.breadcrumb}>
+          <Link href="/">Home</Link>
+          <span>/</span>
+          <span>About</span>
+        </nav>
+        <span className={styles.heroTag}>Initiate. Effect. Sustain Change.</span>
+      </Hero>
 
       <section className={`section ${styles.storySection}`}>
         <div className="container">
@@ -123,7 +116,9 @@ export default function AboutPage() {
             {stats.map((stat, index) => (
               <AnimatedSection key={stat.label} delay={index * 100}>
                 <div className={styles.statCard}>
-                  <span className={styles.statValue}>{stat.value}</span>
+                  <span className={styles.statValue}>
+                    <Counter end={stat.value} suffix={stat.suffix} duration={2500} />
+                  </span>
                   <span className={styles.statLabel}>{stat.label}</span>
                 </div>
               </AnimatedSection>

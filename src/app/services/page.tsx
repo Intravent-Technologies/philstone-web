@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { Target, BookOpen, Cpu, Layers, ArrowRight, Check, Sparkles } from 'lucide-react';
 import AnimatedSection from '@/components/AnimatedSection';
+import Hero from '@/components/Hero';
 import styles from './page.module.css';
 
 const pillars = [
@@ -76,27 +77,18 @@ export const metadata = {
 export default function ServicesPage() {
   return (
     <>
-      <section className={styles.hero}>
-        <div className={styles.heroGrid} />
-        <div className="container">
-          <AnimatedSection>
-            <nav className={styles.breadcrumb}>
-              <Link href="/">Home</Link>
-              <span>/</span>
-              <span>Services</span>
-            </nav>
-          </AnimatedSection>
-          <AnimatedSection delay={100}>
-            <span className={styles.heroTag}>Smart Solutions That Drive Real Results</span>
-          </AnimatedSection>
-          <AnimatedSection delay={200}>
-            <h1>What We Do</h1>
-          </AnimatedSection>
-          <AnimatedSection delay={300}>
-            <p>Unlock sustainable growth through expert consulting, world-class training, Agile delivery, and intelligent AI-driven transformation.</p>
-          </AnimatedSection>
-        </div>
-      </section>
+      <Hero
+        imageSrc="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1920&q=80"
+        title="What We Do"
+        subtitle="Unlock sustainable growth through expert consulting, world-class training, Agile delivery, and intelligent AI-driven transformation."
+      >
+        <nav className={styles.breadcrumb}>
+          <Link href="/">Home</Link>
+          <span>/</span>
+          <span>Services</span>
+        </nav>
+        <span className={styles.heroTag}>Smart Solutions That Drive Real Results</span>
+      </Hero>
 
       <section className={`section ${styles.pillarsSection}`}>
         <div className="container">

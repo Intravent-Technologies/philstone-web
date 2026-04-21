@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { ArrowRight, Check, Target, TrendingUp, Users, Shield, Award, Clock } from 'lucide-react';
 import AnimatedSection from '@/components/AnimatedSection';
+import Hero from '@/components/Hero';
 import styles from './page.module.css';
 
 const benefits = [
@@ -25,29 +26,20 @@ export const metadata = {
 export default function ConsultingPage() {
   return (
     <>
-      <section className={styles.hero}>
-        <div className={styles.heroGrid} />
-        <div className="container">
-          <AnimatedSection>
-            <nav className={styles.breadcrumb}>
-              <Link href="/">Home</Link>
-              <span>/</span>
-              <Link href="/services">Services</Link>
-              <span>/</span>
-              <span>Consulting & Advisory</span>
-            </nav>
-          </AnimatedSection>
-          <AnimatedSection delay={100}>
-            <span className={styles.heroTag}>Pillar 1</span>
-          </AnimatedSection>
-          <AnimatedSection delay={200}>
-            <h1>Consulting & Advisory</h1>
-          </AnimatedSection>
-          <AnimatedSection delay={300}>
-            <p>Strategic guidance for measurable impact. Our consulting team combines globally certified expertise with deep sector knowledge to help you navigate complexity, reduce risk, and accelerate performance.</p>
-          </AnimatedSection>
-        </div>
-      </section>
+      <Hero
+        imageSrc="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1920&q=80"
+        title="Consulting & Advisory"
+        subtitle="Strategic guidance for measurable impact. Our consulting team combines globally certified expertise with deep sector knowledge to help you navigate complexity, reduce risk, and accelerate performance."
+      >
+        <nav className={styles.breadcrumb}>
+          <Link href="/">Home</Link>
+          <span>/</span>
+          <Link href="/services">Services</Link>
+          <span>/</span>
+          <span>Consulting & Advisory</span>
+        </nav>
+        <span className={styles.heroTag}>Pillar 1</span>
+      </Hero>
 
       <section className={`section ${styles.benefitsSection}`}>
         <div className="container">

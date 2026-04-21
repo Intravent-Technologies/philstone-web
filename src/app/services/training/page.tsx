@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { ArrowRight, Check, Award, BookOpen, Users, TrendingUp } from 'lucide-react';
 import AnimatedSection from '@/components/AnimatedSection';
+import Hero from '@/components/Hero';
 import styles from '../consulting/page.module.css';
 
 const certifications = [
@@ -25,29 +26,20 @@ export const metadata = {
 export default function TrainingPage() {
   return (
     <>
-      <section className={styles.hero}>
-        <div className={styles.heroGrid} />
-        <div className="container">
-          <AnimatedSection>
-            <nav className={styles.breadcrumb}>
-              <Link href="/">Home</Link>
-              <span>/</span>
-              <Link href="/services">Services</Link>
-              <span>/</span>
-              <span>Training & Certification</span>
-            </nav>
-          </AnimatedSection>
-          <AnimatedSection delay={100}>
-            <span className={styles.heroTag}>Pillar 2</span>
-          </AnimatedSection>
-          <AnimatedSection delay={200}>
-            <h1>Training & Certification</h1>
-          </AnimatedSection>
-          <AnimatedSection delay={300}>
-            <p>Build capability. Earn credentials. Drive performance. We deliver globally accredited training programmes led by experienced practitioners and designed for immediate workplace application.</p>
-          </AnimatedSection>
-        </div>
-      </section>
+      <Hero
+        imageSrc="https://images.unsplash.com/photo-1531482615713-2afd69097998?w=1920&q=80"
+        title="Training & Certification"
+        subtitle="Build capability. Earn credentials. Drive performance. We deliver globally accredited training programmes led by experienced practitioners and designed for immediate workplace application."
+      >
+        <nav className={styles.breadcrumb}>
+          <Link href="/">Home</Link>
+          <span>/</span>
+          <Link href="/services">Services</Link>
+          <span>/</span>
+          <span>Training & Certification</span>
+        </nav>
+        <span className={styles.heroTag}>Pillar 2</span>
+      </Hero>
 
       <section className={`section ${styles.benefitsSection}`}>
         <div className="container">

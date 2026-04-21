@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import AnimatedSection from '@/components/AnimatedSection';
+import Hero from '@/components/Hero';
 import { useCaseStudies } from '@/hooks/useContent';
 import styles from './page.module.css';
 
@@ -12,46 +13,36 @@ export default function CaseStudiesPage() {
   if (loading) {
     return (
       <>
-        <section className={styles.hero}>
-          <div className={styles.heroGrid} />
-          <div className="container">
-            <nav className={styles.breadcrumb}>
-              <Link href="/">Home</Link>
-              <span>/</span>
-              <span>Case Studies</span>
-            </nav>
-            <span className={styles.heroTag}>Our Work</span>
-            <h1>Case Studies</h1>
-            <p>Loading...</p>
-          </div>
-        </section>
+        <Hero
+          imageSrc="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1920&q=80"
+          title="Case Studies"
+          subtitle="Loading..."
+        >
+          <nav className={styles.breadcrumb}>
+            <Link href="/">Home</Link>
+            <span>/</span>
+            <span>Case Studies</span>
+          </nav>
+          <span className={styles.heroTag}>Our Work</span>
+        </Hero>
       </>
     );
   }
 
   return (
     <>
-      <section className={styles.hero}>
-        <div className={styles.heroGrid} />
-        <div className="container">
-          <AnimatedSection>
-            <nav className={styles.breadcrumb}>
-              <Link href="/">Home</Link>
-              <span>/</span>
-              <span>Case Studies</span>
-            </nav>
-          </AnimatedSection>
-          <AnimatedSection delay={100}>
-            <span className={styles.heroTag}>Our Work</span>
-          </AnimatedSection>
-          <AnimatedSection delay={200}>
-            <h1>Case Studies</h1>
-          </AnimatedSection>
-          <AnimatedSection delay={300}>
-            <p>Explore how we&apos;ve helped organisations across industries achieve measurable, sustainable transformation through our consulting, training, and AI services.</p>
-          </AnimatedSection>
-        </div>
-      </section>
+      <Hero
+        imageSrc="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1920&q=80"
+        title="Case Studies"
+        subtitle="Explore how we've helped organizations across Africa, Europe, and the Middle East transform their operations and achieve measurable results."
+      >
+        <nav className={styles.breadcrumb}>
+          <Link href="/">Home</Link>
+          <span>/</span>
+          <span>Case Studies</span>
+        </nav>
+        <span className={styles.heroTag}>Our Work</span>
+      </Hero>
 
       <section className={`section ${styles.studiesSection}`}>
         <div className="container">

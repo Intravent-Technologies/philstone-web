@@ -1,25 +1,8 @@
-.hero {
-  position: relative;
-  background: #ffffff;
-  padding: 160px 0 100px;
-  text-align: center;
-  overflow: hidden;
-}
-
-.heroGrid {
-  position: absolute;
-  inset: 0;
-  background-image: 
-    linear-gradient(rgba(49, 130, 206, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(49, 130, 206, 0.03) 1px, transparent 1px);
-  background-size: 60px 60px;
-}
-
 .breadcrumb {
   display: flex;
   justify-content: center;
   gap: 12px;
-  margin-bottom: 32px;
+  margin-bottom: 24px;
   font-size: 14px;
   color: rgba(255, 255, 255, 0.7);
 }
@@ -40,23 +23,11 @@
   font-weight: 600;
   letter-spacing: 3px;
   text-transform: uppercase;
-  background: #3182ce;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  margin-bottom: 24px;
-}
-
-.hero h1 {
-  font-size: clamp(2.5rem, 5vw, 4rem);
-  color: #ffffff;
-  margin-bottom: 16px;
-}
-
-.hero p {
-  font-size: 1.5rem;
   color: #3182ce;
-  font-weight: 500;
+  margin-bottom: 16px;
+  padding: 8px 16px;
+  background: rgba(49, 130, 206, 0.2);
+  border-radius: 20px;
 }
 
 .storySection {
@@ -265,10 +236,7 @@
   font-family: var(--font-heading);
   font-size: 3rem;
   font-weight: 700;
-  background: #3182ce;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #3182ce;
   line-height: 1;
   margin-bottom: 12px;
 }

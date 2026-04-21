@@ -1,6 +1,7 @@
 import Link from 'next/link';
-import { ArrowRight, Check, Layers, Users, RefreshCw, Target } from 'lucide-react';
+import { ArrowRight, Check, Layers, Users, Clock, Recycle, Target, Award, RefreshCw } from 'lucide-react';
 import AnimatedSection from '@/components/AnimatedSection';
+import Hero from '@/components/Hero';
 import styles from '../consulting/page.module.css';
 
 const services = [
@@ -32,29 +33,20 @@ export const metadata = {
 export default function AgileScrumPage() {
   return (
     <>
-      <section className={styles.hero}>
-        <div className={styles.heroGrid} />
-        <div className="container">
-          <AnimatedSection>
-            <nav className={styles.breadcrumb}>
-              <Link href="/">Home</Link>
-              <span>/</span>
-              <Link href="/services">Services</Link>
-              <span>/</span>
-              <span>Agile & Scrum</span>
-            </nav>
-          </AnimatedSection>
-          <AnimatedSection delay={100}>
-            <span className={styles.heroTag}>Pillar 4</span>
-          </AnimatedSection>
-          <AnimatedSection delay={200}>
-            <h1>Agile & Scrum</h1>
-          </AnimatedSection>
-          <AnimatedSection delay={300}>
-            <p>Organisations across every sector are adopting Agile and Scrum frameworks to deliver faster, respond to change, and maximise value delivery. We help you move from traditional approaches to adaptive, outcome-focused ways of working.</p>
-          </AnimatedSection>
-        </div>
-      </section>
+      <Hero
+        imageSrc="https://images.unsplash.com/photo-1552664730-d307ca884978?w=1920&q=80"
+        title="Agile & Scrum"
+        subtitle="Organisations across every sector are adopting Agile and Scrum frameworks to deliver faster, respond to change, and maximise value delivery. We help you move from traditional approaches to adaptive, outcome-focused ways of working."
+      >
+        <nav className={styles.breadcrumb}>
+          <Link href="/">Home</Link>
+          <span>/</span>
+          <Link href="/services">Services</Link>
+          <span>/</span>
+          <span>Agile & Scrum</span>
+        </nav>
+        <span className={styles.heroTag}>Pillar 4</span>
+      </Hero>
 
       <section className={`section ${styles.benefitsSection}`}>
         <div className="container">

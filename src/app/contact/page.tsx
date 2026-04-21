@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { Phone, Mail, MapPin, Clock, Send, CheckCircle } from 'lucide-react';
 import AnimatedSection from '@/components/AnimatedSection';
+import Hero from '@/components/Hero';
 import styles from './page.module.css';
 
 const offices = [
@@ -51,27 +52,18 @@ export default function ContactPage() {
 
   return (
     <>
-      <section className={styles.hero}>
-        <div className={styles.heroGrid} />
-        <div className="container">
-          <AnimatedSection>
-            <nav className={styles.breadcrumb}>
-              <Link href="/">Home</Link>
-              <span>/</span>
-              <span>Contact</span>
-            </nav>
-          </AnimatedSection>
-          <AnimatedSection delay={100}>
-            <span className={styles.heroTag}>Let&apos;s Start a Conversation</span>
-          </AnimatedSection>
-          <AnimatedSection delay={200}>
-            <h1>Get in Touch</h1>
-          </AnimatedSection>
-          <AnimatedSection delay={300}>
-            <p>Whether you&apos;re exploring consulting support, planning a training programme, pursuing Agile transformation, or ready to harness AI for your business, we&apos;d love to hear from you.</p>
-          </AnimatedSection>
-        </div>
-      </section>
+      <Hero
+        imageSrc="https://images.unsplash.com/photo-1557804506-669a679d5c38?w=1920&q=80"
+        title="Get in Touch"
+        subtitle="Whether you're exploring consulting support, planning a training programme, pursuing Agile transformation, or ready to harness AI for your business, we'd love to hear from you."
+      >
+        <nav className={styles.breadcrumb}>
+          <Link href="/">Home</Link>
+          <span>/</span>
+          <span>Contact</span>
+        </nav>
+        <span className={styles.heroTag}>Let's Start a Conversation</span>
+      </Hero>
 
       <section className={`section ${styles.contactSection}`}>
         <div className="container">

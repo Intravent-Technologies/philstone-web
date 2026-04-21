@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { ArrowRight, Clock, Calendar } from 'lucide-react';
 import AnimatedSection from '@/components/AnimatedSection';
+import Hero from '@/components/Hero';
 import { useBlogPosts } from '@/hooks/useContent';
 import styles from './page.module.css';
 
@@ -16,46 +17,36 @@ export default function BlogPage() {
   if (loading) {
     return (
       <>
-        <section className={styles.hero}>
-          <div className={styles.heroGrid} />
-          <div className="container">
-            <nav className={styles.breadcrumb}>
-              <Link href="/">Home</Link>
-              <span>/</span>
-              <span>Blog</span>
-            </nav>
-            <span className={styles.heroTag}>Insights & Thought Leadership</span>
-            <h1>Philstone Blog</h1>
-            <p>Loading...</p>
-          </div>
-        </section>
+        <Hero
+          imageSrc="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=1920&q=80"
+          title="Philstone Blog"
+          subtitle="Loading..."
+        >
+          <nav className={styles.breadcrumb}>
+            <Link href="/">Home</Link>
+            <span>/</span>
+            <span>Blog</span>
+          </nav>
+          <span className={styles.heroTag}>Insights & Thought Leadership</span>
+        </Hero>
       </>
     );
   }
 
   return (
     <>
-      <section className={styles.hero}>
-        <div className={styles.heroGrid} />
-        <div className="container">
-          <AnimatedSection>
-            <nav className={styles.breadcrumb}>
-              <Link href="/">Home</Link>
-              <span>/</span>
-              <span>Blog</span>
-            </nav>
-          </AnimatedSection>
-          <AnimatedSection delay={100}>
-            <span className={styles.heroTag}>Insights & Thought Leadership</span>
-          </AnimatedSection>
-          <AnimatedSection delay={200}>
-            <h1>Philstone Blog</h1>
-          </AnimatedSection>
-          <AnimatedSection delay={300}>
-            <p>Practical insights, expert perspectives, and actionable guidance on Project Management, AI Transformation, Agile, and Process Excellence.</p>
-          </AnimatedSection>
-        </div>
-      </section>
+      <Hero
+        imageSrc="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=1920&q=80"
+        title="Philstone Blog"
+        subtitle="Practical insights, expert perspectives, and actionable guidance on Project Management, AI Transformation, Agile, and Process Excellence."
+      >
+        <nav className={styles.breadcrumb}>
+          <Link href="/">Home</Link>
+          <span>/</span>
+          <span>Blog</span>
+        </nav>
+        <span className={styles.heroTag}>Insights & Thought Leadership</span>
+      </Hero>
 
       <section className={`section ${styles.blogSection}`}>
         <div className="container">
