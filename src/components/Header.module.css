@@ -25,16 +25,10 @@
 .logo img {
   height: 60px;
   width: auto;
-  background: transparent;
-  filter: brightness(0) invert(1);
 }
 
 .logo {
-  background: transparent;
-}
-
-.header:not(.scrolled) .logo img {
-  filter: brightness(0) invert(1);
+  display: inline-block;
 }
 
 .nav {
