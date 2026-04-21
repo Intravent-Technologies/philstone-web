@@ -10,8 +10,8 @@
   position: absolute;
   inset: 0;
   background-image: 
-    linear-gradient(rgba(246, 173, 85, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(246, 173, 85, 0.05) 1px, transparent 1px);
+    linear-gradient(rgba(49, 130, 206, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(49, 130, 206, 0.05) 1px, transparent 1px);
   background-size: 60px 60px;
   pointer-events: none;
 }
@@ -44,7 +44,7 @@
   font-weight: 600;
   letter-spacing: 2px;
   text-transform: uppercase;
-  background: linear-gradient(135deg, #3182ce 0%, #1a365d 100%);
+  background: #3182ce;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -77,11 +77,11 @@
 }
 
 .social a:hover {
-  background: linear-gradient(135deg, #3182ce 0%, #1a365d 100%);
+  background: #3182ce;
   border-color: #3182ce;
   color: #1a365d;
   transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(246, 173, 85, 0.3);
+  box-shadow: 0 4px 15px rgba(49, 130, 206, 0.3);
 }
 
 .links h4,

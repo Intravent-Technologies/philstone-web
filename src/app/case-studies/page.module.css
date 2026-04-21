@@ -1,6 +1,6 @@
 .hero {
   position: relative;
-  background: linear-gradient(135deg, #1a365d 0%, #2c5282 50%, #3182ce 100%);
+  background: #ffffff;
   padding: 160px 0 100px;
   text-align: center;
   overflow: hidden;
@@ -43,9 +43,9 @@
   color: #3182ce;
   margin-bottom: 20px;
   padding: 8px 16px;
-  background: rgba(246, 173, 85, 0.15);
+  background: rgba(49, 130, 206, 0.15);
   border-radius: 20px;
-  border: 1px solid rgba(246, 173, 85, 0.3);
+  border: 1px solid rgba(49, 130, 206, 0.3);
 }
 
 .hero h1 {
@@ -109,7 +109,7 @@
   top: 16px;
   left: 16px;
   padding: 6px 12px;
-  background: linear-gradient(135deg, #3182ce 0%, #1a365d 100%);
+  background: #3182ce;
   color: #1a365d;
   font-size: 11px;
   font-weight: 600;
@@ -155,7 +155,7 @@
   font-family: var(--font-heading);
   font-size: 1.25rem;
   font-weight: 700;
-  background: linear-gradient(135deg, #3182ce 0%, #1a365d 100%);
+  background: #3182ce;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -184,7 +184,7 @@
 
 .ctaSection {
   position: relative;
-  background: linear-gradient(135deg, #1a365d 0%, #2c5282 50%, #3182ce 100%);
+  background: #ffffff;
   padding: 120px 0;
   text-align: center;
   overflow: hidden;
@@ -222,19 +222,19 @@
   align-items: center;
   gap: 10px;
   padding: 18px 36px;
-  background: linear-gradient(135deg, #3182ce 0%, #1a365d 100%);
+  background: #3182ce;
   color: #1a365d;
   font-family: var(--font-heading);
   font-weight: 600;
   font-size: 16px;
   border-radius: var(--radius-md);
   transition: var(--transition-fast);
-  box-shadow: 0 4px 20px rgba(246, 173, 85, 0.3);
+  box-shadow: 0 4px 20px rgba(49, 130, 206, 0.3);
 }
 
 .ctaButton:hover {
   transform: scale(1.05);
-  box-shadow: 0 6px 30px rgba(246, 173, 85, 0.5);
+  box-shadow: 0 6px 30px rgba(49, 130, 206, 0.5);
 }
 
 @media (max-width: 1024px) {

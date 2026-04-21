@@ -1,6 +1,6 @@
 .hero {
   position: relative;
-  background: linear-gradient(135deg, #1a365d 0%, #2c5282 50%, #3182ce 100%);
+  background: #ffffff;
   padding: 160px 0 100px;
   overflow: hidden;
 }
@@ -42,9 +42,9 @@
   color: #3182ce;
   margin-bottom: 20px;
   padding: 8px 16px;
-  background: rgba(246, 173, 85, 0.15);
+  background: rgba(49, 130, 206, 0.15);
   border-radius: 20px;
-  border: 1px solid rgba(246, 173, 85, 0.3);
+  border: 1px solid rgba(49, 130, 206, 0.3);
 }
 
 .hero h1 {
@@ -113,7 +113,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, rgba(49, 130, 206, 0.15) 0%, rgba(246, 173, 85, 0.1) 100%);
+  background: linear-gradient(135deg, rgba(49, 130, 206, 0.15) 0%, rgba(49, 130, 206, 0.1) 100%);
   color: #3182ce;
   border-radius: 50%;
   margin: 0 auto 24px;
@@ -133,7 +133,7 @@
 }
 
 .offeringsSection {
-  background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+  background: #f8fafc;
 }
 
 .offeringsGrid {
@@ -182,7 +182,7 @@
 
 .ctaSection {
   position: relative;
-  background: linear-gradient(135deg, #1a365d 0%, #2c5282 50%, #3182ce 100%);
+  background: #ffffff;
   padding: 120px 0;
   text-align: center;
   overflow: hidden;
@@ -230,19 +230,19 @@
   align-items: center;
   gap: 10px;
   padding: 18px 32px;
-  background: linear-gradient(135deg, #3182ce 0%, #1a365d 100%);
+  background: #3182ce;
   color: #1a365d;
   font-family: var(--font-heading);
   font-weight: 600;
   font-size: 15px;
   border-radius: var(--radius-md);
   transition: var(--transition-fast);
-  box-shadow: 0 4px 20px rgba(246, 173, 85, 0.3);
+  box-shadow: 0 4px 20px rgba(49, 130, 206, 0.3);
 }
 
 .primaryCta:hover {
   transform: scale(1.05);
-  box-shadow: 0 6px 30px rgba(246, 173, 85, 0.5);
+  box-shadow: 0 6px 30px rgba(49, 130, 206, 0.5);
 }
 
 .secondaryCta {

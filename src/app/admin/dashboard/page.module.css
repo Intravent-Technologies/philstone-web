@@ -196,7 +196,7 @@
   align-items: center;
   gap: 8px;
   padding: 12px 20px;
-  background: linear-gradient(135deg, #3182ce 0%, #2c5282 100%);
+  background: #3182ce;
   color: #ffffff;
   font-weight: 600;
   font-size: 0.9rem;
@@ -513,7 +513,7 @@
   align-items: center;
   gap: 8px;
   padding: 10px 20px;
-  background: linear-gradient(135deg, #3182ce 0%, #2c5282 100%);
+  background: #3182ce;
   color: #ffffff;
   font-weight: 600;
   font-size: 0.85rem;
@@ -714,7 +714,7 @@
 
 .saveBtn {
   padding: 12px 20px;
-  background: linear-gradient(135deg, #3182ce 0%, #2c5282 100%);
+  background: #3182ce;
   color: #ffffff;
   font-weight: 600;
   border-radius: 8px;

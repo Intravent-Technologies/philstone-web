@@ -1,6 +1,6 @@
 .hero {
   position: relative;
-  background: linear-gradient(135deg, #1a365d 0%, #2c5282 50%, #3182ce 100%);
+  background: #ffffff;
   padding: 140px 0 80px;
   overflow: hidden;
 }
@@ -38,9 +38,9 @@
   color: #3182ce;
   margin-bottom: 20px;
   padding: 8px 16px;
-  background: rgba(246, 173, 85, 0.15);
+  background: rgba(49, 130, 206, 0.15);
   border-radius: 20px;
-  border: 1px solid rgba(246, 173, 85, 0.3);
+  border: 1px solid rgba(49, 130, 206, 0.3);
 }
 
 .hero h1 {
@@ -246,7 +246,7 @@
   align-items: center;
   gap: 8px;
   padding: 12px 20px;
-  background: linear-gradient(135deg, #3182ce 0%, #1a365d 100%);
+  background: #3182ce;
   color: #1a365d;
   font-family: var(--font-heading);
   font-weight: 600;
@@ -257,7 +257,7 @@
 
 .sidebarCta:hover {
   transform: scale(1.02);
-  box-shadow: 0 4px 15px rgba(246, 173, 85, 0.3);
+  box-shadow: 0 4px 15px rgba(49, 130, 206, 0.3);
 }
 
 .relatedPosts {
