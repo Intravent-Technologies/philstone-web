@@ -46,6 +46,10 @@
   padding: 8px 0;
 }
 
+.header.scrolled .navLink {
+  color: #1a365d;
+}
+
 .navLink:hover {
   color: #3182ce;
 }
@@ -82,8 +86,11 @@
 
 .menuButton {
   display: none;
-  color: #3182ce;
-  padding: 8px;
+  color: #1a365d;
+}
+
+.header:not(.scrolled) .menuButton {
+  color: #ffffff;
 }
 
 .mobileMenu {
