@@ -68,9 +68,9 @@ export default function HomePage() {
           muted
           loop
           playsInline
-          poster="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920&q=80"
+          poster="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1920&q=80"
         >
-          <source src="https://cdn.pixabay.com/video/2020/05/25/40130-424930032_large.mp4" type="video/mp4" />
+          <source src="https://videos.pexels.com/video-files/3129671/3129671-uhd_2560_1440_30fps.mp4" type="video/mp4" />
         </video>
         <div className={styles.heroOverlay} />
         <div className={styles.heroGradientBottom} />
